@@ -24,12 +24,18 @@
     "loopback-datasource-juggler": "^2.39.0",
     "serve-favicon": "^2.0.1",
     "strong-error-handler": "^2.0.0",
-    "url": "^0.11.0"
+    "url": "^0.11.0",
+    "winston": "^2.3.1"
   },
   "devDependencies": {
-    "eslint": "^3.17.1",
+    "eslint": "^3.19.0",
     "eslint-config-loopback": "^8.0.0",
-    "nsp": "^2.1.0"
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-node": "^5.0.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "nsp": "^2.6.3"
   },
   "repository": {
     "type": "",
