@@ -1,29 +1,29 @@
-var fs = require('fs');
-var readline = require('readline');
-var google = require('googleapis');
-var googleAuth = require('google-auth-library');
+/* eslint-disable promise/param-names */
+/* eslint-disable strict */
 
-var API_KEY = "AIzaSyAPck9T0HWtOh2eaVT7s2mtVAuw_rpY8a0";
+var google = require('googleapis');
+// var googleAuth = require('google-auth-library');
+var logger = require('./logger');
+var API_KEY = 'AIzaSyAPck9T0HWtOh2eaVT7s2mtVAuw_rpY8a0';
 
 // Some API need authentication
 
-function YoutubeApi() {
+function YoutubeApi () {
 
-};
+}
 
 YoutubeApi.prototype.searchVideo = function (auth, searchText, nextToken) {
-
   return new Promise(function (fulfill, reject) {
-
     var service = google.youtube('v3');
     service.search.list({
-      key: API_KEY,
+      key:        API_KEY,
       maxResults: 25,
-      part: 'snippet',
-      q: searchText,
-      type: ''
+      part:       'snippet',
+      q:          searchText,
+      type:       ''
     }, function (err, response) {
       if (err) {
+        logger.error(err);
         console.log('The API searchVideo returned an error: ' + err);
         reject(err);
         return;
@@ -31,19 +31,16 @@ YoutubeApi.prototype.searchVideo = function (auth, searchText, nextToken) {
       fulfill(response);
     });
   });
-
 };
 
 YoutubeApi.prototype.getComments = function (videoId) {
-
   return new Promise(function (fulfill, reject) {
-
-    videoId = "36m1o-tM05g";
+    videoId = '36m1o-tM05g';
     var service = google.youtube('v3');
     service.commentThreads.list({
-      key: API_KEY,
-      part: 'snippet,replies',
-      videoId: videoId,
+      key:     API_KEY,
+      part:    'snippet,replies',
+      videoId: videoId
     }, function (err, response) {
       if (err) {
         console.log('The API getComments returned an error: ' + err);
@@ -53,9 +50,7 @@ YoutubeApi.prototype.getComments = function (videoId) {
       fulfill(response);
     });
   });
-
 };
-
 
 // ============================================ //
 // ============= CONVERT METHOD =============== //
